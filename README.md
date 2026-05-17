@@ -2,25 +2,44 @@
 
 *A modern ASP.NET Core 8 web application for efficient hospital administration and real-time communication.*
 
-![.NET 8](https://img.shields.io/badge/.NET-8.0-blueviolet) ![License: MIT](https://img.shields.io/badge/License-MIT-green) ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
-
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-8.0-blueviolet)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
+![SQL Server](https://img.shields.io/badge/Database-SQL_Server-red)
+![License](https://img.shields.io/badge/License-MIT-green)
 ---
 
 HealthCore is a comprehensive, data-driven Hospital Management System (HMS) built with ASP.NET Core 8. It provides a centralized web application for hospital administrators to manage patients, doctors, appointments, and departments. The core of the application is a powerful, interactive dashboard that visualizes key performance metrics in real-time.
 
 ---
 
-### 🎥 Live Demo
+### 🚀 Live Application
 
-Click below GIF to watch the full system walkthrough video 👇
+Click below GIF to try live project 👇
 
-<a href="https://drive.google.com/file/d/1F7bn5GGBvKolZCyMcBUZfSyGEP531Bi-/view?usp=sharing" target="_blank">
+<a href="https://healthcore.runasp.net" target="_blank">
   <img src="healthcore.gif" alt="HealthCore Demo Video" width="800">
 </a>
 <br/>
+
 or
 
-**[▶ Click here to Watch the Full Demo on Google Drive](https://drive.google.com/file/d/1F7bn5GGBvKolZCyMcBUZfSyGEP531Bi-/view?usp=sharing)**
+
+🔗 https://healthcore.runasp.net
+
+<br/>
+
+---
+
+### 🔐 Demo Credentials
+
+```text
+Username: Admin
+Password: Admin@123
+```
+⚠️ Note: Demo credentials are for evaluation and testing purposes only.
+
+
+**[▶ Click here to watch the full system walkthrough video on Google Drive](https://drive.google.com/file/d/1F7bn5GGBvKolZCyMcBUZfSyGEP531Bi-/view?usp=sharing)**
 
 ---
 
