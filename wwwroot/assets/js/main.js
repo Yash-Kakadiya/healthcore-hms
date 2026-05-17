@@ -316,4 +316,69 @@
     }, 200);
   }
 
+  /**
+   * Page loader between navigations
+   */
+  const pageLoader = select('#page-loader');
+  if (pageLoader) {
+    const activatePageLoader = () => {
+      pageLoader.classList.add('is-active');
+      sessionStorage.setItem('showPageLoader', '1');
+    };
+
+    const deactivatePageLoader = () => {
+      pageLoader.classList.remove('is-active');
+      sessionStorage.removeItem('showPageLoader');
+    };
+
+    if (sessionStorage.getItem('showPageLoader') === '1') {
+      pageLoader.classList.add('is-active');
+    }
+
+    window.addEventListener('load', deactivatePageLoader);
+    window.addEventListener('pageshow', deactivatePageLoader);
+
+    const shouldIgnoreLink = (link) => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('javascript:')) {
+        return true;
+      }
+
+      if (href.startsWith('mailto:') || href.startsWith('tel:')) {
+        return true;
+      }
+
+      if (link.hasAttribute('download') || (link.target && link.target !== '_self')) {
+        return true;
+      }
+
+      if (link.dataset && link.dataset.bsToggle) {
+        return true;
+      }
+
+      return false;
+    };
+
+    document.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      const link = event.target.closest('a');
+      if (!link || shouldIgnoreLink(link)) {
+        return;
+      }
+
+      activatePageLoader();
+    });
+
+    document.addEventListener('submit', (event) => {
+      if (event.defaultPrevented) {
+        return;
+      }
+
+      activatePageLoader();
+    });
+  }
+
 })();

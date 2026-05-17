@@ -306,6 +306,9 @@
     @* ===== END: REVISED CHAT STYLE BLOCK ===== *@
 </head>
 <body>
+    <div id="page-loader" class="page-loader" aria-hidden="true">
+        <div class="page-loader-spinner" role="status" aria-label="Loading"></div>
+    </div>
 
     <!-- Particle background container -->
     <div id="particles-js"></div>
@@ -464,7 +467,7 @@
             </li><!-- End F.A.Q Page Nav -->*@
 
             <li class="nav-item">
-                <a class="nav-link " href="https://github.com/Yash-Kakadiya">
+                <a class="nav-link " href="https://github.com/Yash-Kakadiya" target="_blank">
                     <i class="bi bi-github"></i>
                     <span>Contact</span>
                 </a>
@@ -626,7 +629,7 @@
                 initParticles();
             };
             themeToggle.addEventListener('change', () => applyTheme(themeToggle.checked ? 'dark' : 'light'));
-            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            const savedTheme = localStorage.getItem('theme') || 'light';
             applyTheme(savedTheme);
 
             // --- ENHANCED particles.js Configuration ---
