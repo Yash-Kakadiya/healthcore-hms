@@ -29,6 +29,7 @@ packages/
 # User-specific files
 *.secrets.json
 appsettings.Development.json
+appsettings.Production.json
 
 # Tooling
 project.lock.json

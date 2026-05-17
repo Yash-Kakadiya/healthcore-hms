@@ -21,7 +21,9 @@ BEGIN
         (UserName, Password, Email, MobileNo, IsActive, Modified, ProfileImage)
     VALUES
         (@UserName, @Password, @Email, @MobileNo, @IsActive, GETDATE(), @ProfileImage);
-END
+END 
+
+GO
 
 
 -- Update
@@ -52,7 +54,9 @@ BEGIN
         IsActive     = @IsActive,
 		ProfileImage = ISNULL(@ProfileImage, ProfileImage)
     WHERE UserID = @UserID;
-END
+END 
+
+GO
 
 
 -- Delete
@@ -62,7 +66,9 @@ CREATE OR ALTER PROC PR_User_Delete
 AS
 BEGIN
     DELETE FROM [User] WHERE UserID = @UserID;
-END
+END 
+
+GO
 
 -- Select All
 -- EXEC PR_User_SelectAll;
@@ -71,7 +77,9 @@ AS
 BEGIN
     SELECT U.UserID, U.UserName, U.Password, U.Email, U.MobileNo, U.IsActive, U.Created, U.Modified, U.ProfileImage
     FROM [User] AS U;
-END
+END 
+
+GO
 
 -- Select By ID
 -- EXEC PR_User_SelectByID @UserID = 2;
@@ -83,7 +91,9 @@ BEGIN
            U.IsActive, U.Created, U.Modified, U.ProfileImage
     FROM [User] AS U
     WHERE UserID = @UserID;
-END
+END 
+
+GO
 
 
 -- Stored Procedures for Department Table
@@ -106,7 +116,9 @@ BEGIN
         (DepartmentName, Description, IsActive, Created, Modified, UserID)
     VALUES
         (@DepartmentName, @Description, @IsActive, GETDATE(), GETDATE(), @UserID);
-END
+END 
+
+GO
 
 -- Update
 /* EXEC PR_Department_Update @DepartmentID = 3,
@@ -130,7 +142,9 @@ BEGIN
         Modified = GETDATE(),
         UserID = @UserID
     WHERE DepartmentID = @DepartmentID;
-END
+END 
+
+GO
 
 -- Delete
 -- EXEC PR_Department_Delete @DepartmentID = 3;
@@ -139,7 +153,9 @@ CREATE OR ALTER PROC PR_Department_Delete
 AS
 BEGIN
     DELETE FROM Department WHERE DepartmentID = @DepartmentID;
-END
+END 
+
+GO
 
 -- Select All
 -- EXEC PR_Department_SelectAll;
@@ -149,7 +165,9 @@ BEGIN
     SELECT D.DepartmentID, D.DepartmentName, D.Description, D.IsActive, D.Created, D.Modified, U.UserName, U.Email, U.MobileNo
     FROM Department AS D JOIN [User] AS U
         ON D.UserID = U.UserID;
-END
+END 
+
+GO
 
 -- Select By ID
 -- EXEC PR_Department_SelectByID @DepartmentID = 3;
@@ -161,7 +179,9 @@ BEGIN
     FROM Department AS D JOIN [User] AS U
         ON D.UserID = U.UserID
     WHERE DepartmentID = @DepartmentID;
-END
+END 
+
+GO
 
 -- Stored Procedures for Doctor Table
 
@@ -189,7 +209,9 @@ BEGIN
         (DoctorName, Phone, Email, Qualification, Specialization, IsActive, Created, Modified, UserID)
     VALUES
         (@DoctorName, @Phone, @Email, @Qualification, @Specialization, @IsActive, GETDATE(), GETDATE(), @UserID);
-END
+END 
+
+GO
 
 -- Update
 /*
@@ -223,7 +245,9 @@ BEGIN
         Modified = GETDATE(),
         UserID = @UserID
     WHERE DoctorID = @DoctorID;
-END
+END 
+
+GO
 
 -- Delete
 -- EXEC PR_Doctor_Delete @DoctorID = 1;
@@ -232,7 +256,9 @@ CREATE OR ALTER PROC PR_Doctor_Delete
 AS
 BEGIN
     DELETE FROM Doctor WHERE DoctorID = @DoctorID;
-END
+END 
+
+GO
 
 -- Select All
 -- EXEC PR_Doctor_SelectAll;
@@ -243,7 +269,9 @@ BEGIN
     SELECT D.DoctorID, D.DoctorName, D.Phone, D.Email, D.Qualification, D.Specialization, D.IsActive, D.Created, D.Modified, U.UserName
     FROM Doctor AS D JOIN [User] AS U
         ON D.UserID = U.UserID;
-END
+END 
+
+GO
 
 -- Select By ID
 -- EXEC PR_Doctor_SelectByID @DoctorID = 1;
@@ -255,7 +283,9 @@ BEGIN
     FROM Doctor AS D JOIN [User] AS U
         ON D.UserID = U.UserID
     WHERE DoctorID = @DoctorID;
-END
+END 
+
+GO
 
 -- Stored Procedures for DoctorDepartment Table
 
@@ -275,7 +305,9 @@ BEGIN
         (DoctorID, DepartmentID, Created, Modified, UserID)
     VALUES
         (@DoctorID, @DepartmentID, GETDATE(), GETDATE(), @UserID);
-END
+END 
+
+GO
 
 -- Update
 /*
@@ -297,7 +329,9 @@ BEGIN
         Modified = GETDATE(),
         UserID = @UserID
     WHERE DoctorDepartmentID = @DoctorDepartmentID;
-END
+END 
+
+GO
 
 -- Delete
 -- EXEC PR_DoctorDepartment_Delete @DoctorDepartmentID = 1;
@@ -306,7 +340,9 @@ CREATE OR ALTER PROC PR_DoctorDepartment_Delete
 AS
 BEGIN
     DELETE FROM DoctorDepartment WHERE DoctorDepartmentID = @DoctorDepartmentID;
-END
+END 
+
+GO
 
 -- Select All
 -- EXEC PR_DoctorDepartment_SelectAll;
@@ -319,7 +355,9 @@ BEGIN
         ON DD.DoctorID = D.DoctorID JOIN Department AS Dept
         ON DD.DepartmentID = Dept.DepartmentID JOIN [User] AS U
         ON DD.UserID = U.UserID;
-END
+END 
+
+GO
 
 -- Select By ID
 -- EXEC PR_DoctorDepartment_SelectByID @DoctorDepartmentID = 3;
@@ -334,7 +372,9 @@ BEGIN
         ON DD.DepartmentID = Dept.DepartmentID JOIN [User] AS U
         ON DD.UserID = U.UserID
     WHERE DoctorDepartmentID = @DoctorDepartmentID;
-END
+END 
+
+GO
 
 -- Stored Procedures for Patient Table
 
@@ -368,7 +408,9 @@ BEGIN
         (PatientName, Phone, Email, Address, DateOfBirth, Gender, City, State, IsActive, Created, Modified, UserID)
     VALUES
         (@PatientName, @Phone, @Email, @Address, @DateOfBirth, @Gender, @City, @State, @IsActive, GETDATE(), GETDATE(), @UserID);
-END
+END 
+
+GO
 
 -- Update
 /*
@@ -411,7 +453,9 @@ BEGIN
         Modified = GETDATE(),
         UserID = @UserID
     WHERE PatientID = @PatientID;
-END
+END 
+
+GO
 
 -- Delete
 -- EXEC PR_Patient_Delete @PatientID = 1;
@@ -420,7 +464,9 @@ CREATE OR ALTER PROC PR_Patient_Delete
 AS
 BEGIN
     DELETE FROM Patient WHERE PatientID = @PatientID;
-END
+END 
+
+GO
 
 -- Select All
 -- EXEC PR_Patient_SelectAll;
@@ -430,7 +476,9 @@ BEGIN
     SELECT P.PatientID, P.PatientName, P.Phone, P.Email, P.Address, P.DateOfBirth, P.Gender, P.City, P.State, P.IsActive, P.Created, P.Modified,U.UserId, U.UserName, U.Email, U.MobileNo
     FROM Patient AS P JOIN [User] AS U
         ON P.UserID = U.UserID;
-END
+END 
+
+GO
 
 -- Select By ID
 -- EXEC PR_Patient_SelectByID @PatientID = 1;
@@ -442,7 +490,9 @@ BEGIN
     FROM Patient AS P JOIN [User] AS U
         ON P.UserID = U.UserID
     WHERE PatientID = @PatientID;
-END
+END 
+
+GO
 
 -- Stored Procedures for Appointment Table
 
@@ -472,7 +522,9 @@ BEGIN
         (DoctorID, PatientID, AppointmentDate, AppointmentStatus, Description, SpecialRemarks, Created, Modified, UserID, TotalConsultedAmount)
     VALUES
         (@DoctorID, @PatientID, @AppointmentDate, @AppointmentStatus, @Description, @SpecialRemarks, GETDATE(), GETDATE(), @UserID, @TotalConsultedAmount);
-END
+END 
+
+GO
 
 -- Update
 /*
@@ -509,7 +561,9 @@ BEGIN
         UserID = @UserID,
         TotalConsultedAmount = @TotalConsultedAmount
     WHERE AppointmentID = @AppointmentID;
-END
+END 
+
+GO
 
 -- Delete
 -- EXEC PR_Appointment_Delete @AppointmentID = 1;
@@ -518,7 +572,9 @@ CREATE OR ALTER PROC PR_Appointment_Delete
 AS
 BEGIN
     DELETE FROM Appointment WHERE AppointmentID = @AppointmentID;
-END
+END 
+
+GO
 
 -- Select All
 -- EXEC PR_Appointment_SelectAll @status=confirmed;
@@ -532,7 +588,7 @@ BEGIN
         ON A.DoctorID = D.DoctorID JOIN Patient AS P
         ON A.PatientID = P.PatientID JOIN [User] AS U
         ON A.UserID = U.UserID;
-END
+END GO
 */
 
 CREATE OR ALTER PROC PR_Appointment_SelectAll
@@ -579,7 +635,9 @@ BEGIN
         AND (@MaxAmount IS NULL OR A.TotalConsultedAmount <= @MaxAmount)
     
     ORDER BY A.AppointmentDate DESC, A.Created DESC
-END
+END 
+
+GO
 
 
 
@@ -597,7 +655,9 @@ BEGIN
         ON A.PatientID = P.PatientID JOIN [User] AS U
         ON A.UserID = U.UserID
     WHERE AppointmentID = @AppointmentID;
-END
+END 
+
+GO
 
 --- Stored Procedure: PR_User_ValidateLogin
 CREATE OR ALTER PROCEDURE [dbo].[PR_User_ValidateLogin]
@@ -615,4 +675,6 @@ BEGIN
     WHERE 
         ([dbo].[User].[Username] = @Username OR [dbo].[User].[Email] = @Username)
         AND [dbo].[User].[Password] = @Password;
-END
+END 
+
+GO
