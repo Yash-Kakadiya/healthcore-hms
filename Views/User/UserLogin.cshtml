@@ -78,6 +78,16 @@
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>
                                     </form>
+                                    <div class="alert alert-info mt-3 mb-0 d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2" role="alert">
+                                        <div>
+                                            <strong>Testing credentials:</strong>
+                                            <div class="small">Username: Admin</div>
+                                            <div class="small">Password: Admin@123</div>
+                                        </div>
+                                        <button type="button" class="btn btn-outline-primary btn-sm" id="fillTestCredentials" data-username="Admin" data-password="Admin@123">
+                                            Use test login
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -95,6 +105,8 @@
                 const togglePassword = document.querySelector('#togglePassword');
                 const password = document.querySelector('#passwordField');
                 const eyeIcon = togglePassword.querySelector('i');
+                const fillTestCredentials = document.querySelector('#fillTestCredentials');
+                const username = document.querySelector('[name="Username"]');
 
                 togglePassword.addEventListener('click', function (e) {
                     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -102,6 +114,15 @@
                     eyeIcon.classList.toggle('bi-eye');
                     eyeIcon.classList.toggle('bi-eye-slash');
                 });
+
+                if (fillTestCredentials && username && password) {
+                    fillTestCredentials.addEventListener('click', function () {
+                        username.value = fillTestCredentials.dataset.username || '';
+                        password.value = fillTestCredentials.dataset.password || '';
+                        username.dispatchEvent(new Event('input', { bubbles: true }));
+                        password.dispatchEvent(new Event('input', { bubbles: true }));
+                    });
+                }
 
                 // Themed SweetAlert for TempData error messages
                 const errorMessage = '@Html.Raw(HttpUtility.JavaScriptStringEncode(TempData["ErrorMessage"]?.ToString()))';
